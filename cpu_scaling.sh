@@ -7,6 +7,11 @@ if [ -z "$MAX_FREQ" ] || [ "$MAX_FREQ" -eq 0 ] 2>/dev/null; then
     MAX_FREQ=$(cat "$CPU_PATH/cpuinfo_max_freq")
 fi
 
+OLD_GOV=$(cat "$CPU_PATH/scaling_governor")
+SCHEDULER=$(cat /sys/block/*/queue/scheduler 2>/dev/null | head -1)
+echo "Previous governor: $OLD_GOV"
+echo "Scheduler: $SCHEDULER"
+
 STEP=$(( (MAX_FREQ - MIN_FREQ) / 10 ))
 [ $STEP -lt 100000 ] && STEP=100000
 
@@ -23,7 +28,6 @@ LAST_IDX=-1
 for c in /sys/devices/system/cpu/cpu*/cpufreq; do
     echo userspace > "$c/scaling_governor"
 done
-echo "set governor=userspace (steps: ${#FREQ_TABLE[@]})"
 
 while true; do
     read -r cpu u1 n1 s1 id1 io1 ir1 so1 st1 _ < /proc/stat
@@ -45,6 +49,6 @@ while true; do
             echo "$target" > "$c/scaling_max_freq"
         done
         LAST_IDX=$idx
-        echo "set $((target/1000))MHz (load=$usage%, step=$idx)"
     fi
+    echo -ne "\r$((target/1000))MHz $usage%  "
 done
