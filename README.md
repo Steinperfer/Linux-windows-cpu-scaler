@@ -22,7 +22,7 @@ Get Available governors:
 ```bash
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
 ```
-Change the governors with:  
+Change the governors for the script with:  
 ```bash
  for c in /sys/devices/system/cpu/cpu*/cpufreq
       echo ondemand | sudo tee "$c/scaling_governor"
