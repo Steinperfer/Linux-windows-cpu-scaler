@@ -9,7 +9,7 @@ This script makes that your cpu is running in powersave while having low usage
 and automaticly scales the Frequency depending on the load, 
 So that you can brwose the internet without a noisy fan. 
   
-  #Install
+#Install
 ```bash
 git clone https://github.com/Steinperfer/Linux-windows-cpu-scaler && cd Linux-windows-cpu-scaler && bash setup_autostart.sh
 ```
