@@ -1,7 +1,7 @@
-# Linux-cpu-freq/schedluer-manager
+# Linux-cpu-freq/governors-manager
   
 Zero-dependency Linux bash script replicating Windows' native Processor Power Management (PPM) for CPU frequency scaling.
-auto-detected hardware min/max/boost frequencies via sysfs for the scheduler in this ca ondemand, can operate inside those values  
+auto-detected hardware min/max/boost frequencies via sysfs for the governors in this ca ondemand, can operate inside those values  
 Compatible with Arch, Ubuntu, and all systemd-based distros.
 
 # Why?  
@@ -18,11 +18,11 @@ git clone https://github.com/Steinperfer/Linux-windows-cpu-scaler && cd Linux-wi
 <img width="2543" height="1439" alt="cpu1" src="https://github.com/user-attachments/assets/772cef8f-84bd-42d3-9fe6-5105332b27b4" />
 
   
-Get Available Scheduler:  
+Get Available governors:  
 ```bash
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
 ```
-Change the scheduler with:  
+Change the governors with:  
 ```bash
  for c in /sys/devices/system/cpu/cpu*/cpufreq
       echo ondemand | sudo tee "$c/scaling_governor"
