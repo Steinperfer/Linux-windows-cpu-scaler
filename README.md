@@ -1,8 +1,13 @@
-# Linux-windows-cpu-scaler
+# Linux-windows-cpu-manager
   
-Zero-dependency Linux bash script replicating Windows' native Processor Power Management (PPM) for CPU frequency scaling.  
+Zero-dependency Linux bash script replicating Windows' native Processor Power Management (PPM) for CPU frequency scaling.
 auto-detected hardware min/max/boost frequencies via sysfs. so that the scheduler can operate inside those values  
 Compatible with Arch, Ubuntu, and all systemd-based distros.
+
+# Why?  
+This script makes that your cpu is running in powersave while having low usage  
+and automaticly scales the Frequency depending on the load, 
+So that you can brwose the internet without a noisy fan.
   
  Stop script from autostarting if you ran setup_autostart.sh
 ```bash
