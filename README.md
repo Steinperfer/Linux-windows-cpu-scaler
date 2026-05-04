@@ -28,7 +28,7 @@ Change the governors for the script with:
       echo ondemand | sudo tee "$c/scaling_governor"
   end
 ```
- Stop script from autostarting if you ran setup_autostart.sh and wont to stop it:
+ Stop script from autostarting if you ran setup_autostart.sh and want to stop it:
 ```bash
 systemctl stop cpu-scaling
 systemctl disable cpu-scaling
